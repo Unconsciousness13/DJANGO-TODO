@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <div class="register-all">
+    <div id="welcome-message">
+        <h1>Welcome to P-Task</h1>
+        <h1>Register</h1>
+    </div>
+
+    <div class="register-page">
+        <div class="form">
+            <form method="POST" class="register-form" enctype="multipart/form-data">
+                {{ form }}
+                {% csrf_token %}
+                <div class="center">
+                    <button class="btn">
+                        <span>Confirmar</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

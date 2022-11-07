@@ -3,7 +3,17 @@
 {% block dynamic_content %}
 
     <div class=container>
-        <h1>Hello</h1>
+        
+            {% if user.is_active %}
+                    <h1>Hello
+                 <a id="user-name-navbar">{{ user.user_name }}</a>
+                </h1>
+            {% endif %}
+
+            {% if not user.is_active %}
+                <h1>Please login or register !</h1>
+            {% endif%}
+        
     </div>
 
     {% csrf_token %}

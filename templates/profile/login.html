@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <div id="welcome-message">
+        <h1>Welcome to P-Task</h1>
+        <h1>Register page </h1>
+    </div>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" method="POST">
+                {{ form }}
+                {% csrf_token %}
+                <button>Entrar</button>
+                <p class="message">Not register? <a href="{% url 'register page' %}">Register</a></p>
+                {% comment %} <p class="message">Forgoten password? <a href="{% url 'password_reset' %}">Forgot password?</a> {% endcomment %}
+                </p>
+            </form>
+        </div>
+    </div>
+
+    {##}
+    {##}
+    {##}
+    {##}
+    {#    <form method="POST">#}
+    {#        {{ form }}#}
+    {#        {% csrf_token %}#}
+    {#        <div class="center">#}
+    {#            <button class="btn">#}
+    {#                <span>Entrar</span>#}
+    {#            </button>#}
+    {#        </div>#}
+    {#    </form>#}
+{% endblock %}
