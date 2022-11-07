@@ -1,0 +1,63 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>P-Task</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+    <link rel="shortcut icon" href="{% static 'favicons/favicon.ico' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body>
+<div id="loader">Loading ...</div>
+<header class="header">
+    <div class="container">
+
+    </div>
+</header>
+<div id="myDiv" class="animate-bottom">
+</div>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/loader.js' %}"></script>
+
+{% block dynamic_content %}
+
+
+{% endblock %}
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="copyright-container">
+                <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by
+                    <a href="https://www.pako.es" target="new">Pako™</a>
+                </p>
+            </div>
+
+            <div class="footer-social-icons-container">
+                <ul class="ul-social-icons">
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/instagram.png' %}"
+                            alt="instagram"/></a>
+                    </li>
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/facebook.png' %}" alt="facebook"/></a>
+                    </li>
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/youtube.png' %}" alt="youtube"/></a>
+                    </li>
+                    <li><a class="social-icons" href="https://pako.es" target="new"><img
+                            src="{% static 'social_icons/twitter.png' %}" alt="twitter"/></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

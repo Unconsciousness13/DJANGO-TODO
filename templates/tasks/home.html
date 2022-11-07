@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+
+    <div class=container>
+        <h1>Hello</h1>
+    </div>
+
+    {% csrf_token %}
+{% endblock %}
