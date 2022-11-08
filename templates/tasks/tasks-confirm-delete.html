@@ -6,9 +6,7 @@
         <form method="post">{% csrf_token %}
             <p>Are you sure to delete the task? <h2>{{ task.title }} ?</h2></p>
             <div class="center">
-                <button class="btn">
-                    <span>Confirm</span>
-                </button>
+                <button type="button" class="btn btn-danger"><i className="fa-solid fa-trash-can"></i>Delete</button>
             </div>
         </form>
     </div>

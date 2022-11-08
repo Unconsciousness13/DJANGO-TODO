@@ -8,8 +8,13 @@ from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
 
-class HomeView(views.TemplateView):
+class HomeView(views.ListView):
     template_name = 'tasks/home.html'
+    model = Task
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class TaskView(views.ListView):

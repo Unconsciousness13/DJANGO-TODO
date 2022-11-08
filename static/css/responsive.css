@@ -1,0 +1,28 @@
+
+@media (max-width: 410px) {
+
+    .tasks-list {
+        display: block;
+    }
+    
+    .task-item {
+       width: 100%;
+    
+    }
+  
+}
+
+
+@media (max-width: 610px) {
+    .tasks-list {
+        display: block;
+    }
+    
+    .task-item {
+       display:block !important; 
+       width: 350px;
+       background-color: red;
+    
+    }
+  
+}
