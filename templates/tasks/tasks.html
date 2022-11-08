@@ -22,7 +22,7 @@
     {% endif %}    
     {% endfor %}       
     </div>
-    {% if object_list|length > 0 %}
+
     <div class="pagination">
         <span class="step-links">
             {% if page_obj.has_previous %}
@@ -40,7 +40,6 @@
             {% endif %}
         </span>  
     </div>
-    {% endif %}
 </div>
 {% csrf_token %}
 {% endblock %}
