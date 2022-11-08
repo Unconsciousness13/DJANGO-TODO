@@ -1,5 +1,8 @@
 
 @media (max-width: 410px) {
+    nav {
+        padding: 10px !important;
+    }
 
     .tasks-list {
         display: block;
@@ -14,14 +17,28 @@
 
 
 @media (max-width: 610px) {
+
+    .custom-footer { 
+        position: fixed;
+        height: 120px;
+        bottom: 0;
+        width: 100%;
+    }
+
+    nav {
+        padding: 10px  !important;
+    }
+
     .tasks-list {
         display: block;
     }
     
     .task-item {
        display:block !important; 
-       width: 350px;
-       background-color: red;
+       width: 90%;
+       margin: auto;
+       margin-top:20px;
+
     
     }
   
