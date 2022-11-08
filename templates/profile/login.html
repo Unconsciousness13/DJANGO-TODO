@@ -8,27 +8,13 @@
     <div class="login-page">
         <div class="form">
             <form class="login-form" method="POST">
-                {{ form }}
+                {{ form.as_p }}
                 {% csrf_token %}
                 <button>Entrar</button>
-                <p class="message">Not register? <a href="{% url 'register page' %}">Register</a></p>
+                <p class="message">Not register? <a href="/register">Register</a></p>
                 {% comment %} <p class="message">Forgoten password? <a href="{% url 'password_reset' %}">Forgot password?</a> {% endcomment %}
                 </p>
             </form>
         </div>
     </div>
-
-    {##}
-    {##}
-    {##}
-    {##}
-    {#    <form method="POST">#}
-    {#        {{ form }}#}
-    {#        {% csrf_token %}#}
-    {#        <div class="center">#}
-    {#            <button class="btn">#}
-    {#                <span>Entrar</span>#}
-    {#            </button>#}
-    {#        </div>#}
-    {#    </form>#}
 {% endblock %}

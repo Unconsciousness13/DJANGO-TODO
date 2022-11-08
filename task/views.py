@@ -14,7 +14,7 @@ class HomeView(views.TemplateView):
 
 class TaskView(views.ListView):
     model = Task
-    template_name = 'tasks/task.html'
+    template_name = 'tasks/tasks.html'
     ordering = 'task_date', 'created_at'
     paginate_by = 6
 
@@ -22,14 +22,24 @@ class TaskView(views.ListView):
         context = super().get_context_data(**kwargs)
         return context
 
+class TaskCompletedView(views.ListView):
+    model = Task
+    template_name = 'tasks/completed-tasks.html'
+    ordering = 'task_date', 'created_at'
+    paginate_by = 6
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 class AddTaskView(PermissionRequiredMixin, views.FormView):
-    permission_required = ()
+    permission_required = ('is_active',)
     template_name = 'tasks/add-task.html'
-    form_class = Task
-    success_url = '/tasks/'
+    form_class = AddTask
+    success_url = '/'
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
 

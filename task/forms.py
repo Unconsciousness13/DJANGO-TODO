@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 class AddTask(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ( 'title', 'description', 'task_date', 'task_hour',  'completed', )
+        fields = ('title', 'description', 'task_date', 'task_hour',  'completed', )
         labels = {
             'title': 'title',
             'description': 'description',
@@ -15,6 +15,7 @@ class AddTask(forms.ModelForm):
             'completed': 'is completed?',
         }
         
+                
 
 
 

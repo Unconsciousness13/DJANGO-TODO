@@ -8,3 +8,16 @@ nav {
     padding: 0 !important;
     margin: 0 10% !important;
 } */
+
+.tasks-list {
+    display: flex ;
+    flex-direction: row ;
+    flex-wrap: wrap ;
+    width: 100% ;
+    background-color: red;
+}
+
+.task-item {
+    flex: 33.33%;
+    background-color: blue;
+}

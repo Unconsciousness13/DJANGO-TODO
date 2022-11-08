@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+
+{% for task in object_list %}
+    {% if task.completed == True %}
+
+        <div className="card" style="width: 18rem">
+            <div className="card-body">
+                <h3 className="card-title">{{ task.title }}</h3>
+                <p className="card-text">{{ task.description}}</p>
+
+            </div>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                    <p>Date: {{task.task_date}}</p>
+
+                </li>
+
+            </ul>
+            <div className="display-flex">
+                <a href="{% url 'task edit' task.pk %}">Edit</a>
+                <a href="{% url 'task delete' task.pk %}">Delete</a>
+
+            </div>
+        </div>
+    {% endif %}    
+{% endfor %}
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% csrf_token %}
+{% endblock %}

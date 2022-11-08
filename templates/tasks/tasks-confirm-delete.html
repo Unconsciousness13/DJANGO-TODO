@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+    <div class="form">
+        <h1>Delete Task</h1>
+        <form method="post">{% csrf_token %}
+            <p>Are you sure to delete the task? <h2>{{ task.title }} ?</h2></p>
+            <div class="center">
+                <button class="btn">
+                    <span>Confirm</span>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

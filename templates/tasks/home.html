@@ -8,11 +8,41 @@
                     <h1>Hello
                  <a id="user-name-navbar">{{ user.user_name }}</a>
                 </h1>
+
+                {% for task in object_list %}
+                <p>KUR</p>
+                <p>{{ object_list }}</p>
+                <div class="column">
+                    <ul>
+                        <li><h1>{{ task.title }}</h1></li>
+                        <li>{{ task.description }}</li>
+                    </ul>       
+                </div>
+                {% endfor %}
+
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+                
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
             {% endif %}
 
             {% if not user.is_active %}
                 <h1>Please login or register !</h1>
-            {% endif%}
+            {% endif %}
         
     </div>
 
