@@ -8,7 +8,9 @@
                     <h1>Hello 
                  <a id="user-name-navbar">{{ user.user_name }}</a>
                 </h1>
+                {% if object_list %}
                 <p> You have {{ object_list|length  }} active tasks
+                {% endif %}    
             {% endif %}
 
             {% if not user.is_active %}

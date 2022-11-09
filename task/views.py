@@ -1,5 +1,5 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 from django.views import generic as views
 from django.views.generic import TemplateView
 from .models import Task
@@ -7,6 +7,11 @@ from .forms import AddTask, RegisterForm
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
+from django.http import HttpResponseRedirect
+
+
+    
+
 
 class HomeView(views.ListView):
     template_name = 'tasks/home.html'
@@ -21,7 +26,7 @@ class TaskView(views.ListView):
     model = Task
     template_name = 'tasks/tasks.html'
     ordering = 'task_date', 'created_at'
-    paginate_by = 6
+    # paginate_by = 6
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,9 +41,10 @@ class TaskCompletedView(views.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+            
 
 class AddTaskView(PermissionRequiredMixin, views.FormView):
-    permission_required = ('is_active',)
+    permission_required = ()
     template_name = 'tasks/add-task.html'
     form_class = AddTask
     success_url = '/'
@@ -57,11 +63,25 @@ class EditTaskView(PermissionRequiredMixin, views.UpdateView):
     success_url = '/tasks/'
 
 
-class DeleteTaskView(PermissionRequiredMixin, views.DeleteView):
-    permission_required = ()
+class DeleteTaskView(LoginRequiredMixin, views.DeleteView):
     model = Task
     template_name = 'tasks/tasks-confirm-delete.html'
     success_url = '/tasks/'
+    
+    def delete(self, request, *args, **kwargs):
+       
+        if self.object.user == self.request.user:
+            self.object = self.get_object()
+            success_url = self.get_success_url()
+            self.object.delete()
+            return HttpResponseRedirect(success_url)
+        return HttpResponseRedirect('/login')
+        
+    def get_object(self, queryset=None):
+        task = super(DeleteTaskView, self).get_object(queryset)
+        if task.user != self.request.user:
+             redirect('/tasks')
+        return task
 
 
 class TaskDetailView(TemplateView):
@@ -69,7 +89,7 @@ class TaskDetailView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(TaskDetailView, self).get_context_data(**kwargs)
-        gymnast = get_object_or_404(Task, **kwargs)
+        task = get_object_or_404(Task, **kwargs)
         context['user'] = Task.user
         context['title'] = Task.title
         context['description'] = Task.description
@@ -83,7 +103,7 @@ class TaskDetailView(TemplateView):
 
 class UserRegisterView(gen_views.CreateView):
     form_class = RegisterForm
-    success_url = reverse_lazy('login page')
+    success_url = reverse_lazy('login_page')
     template_name = 'profile/register.html'
 
 

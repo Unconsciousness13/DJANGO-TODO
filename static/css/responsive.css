@@ -26,7 +26,7 @@
     }
 
     nav {
-        padding: 10px  !important;
+        padding: 30px  !important;
     }
 
     .tasks-list {
@@ -41,5 +41,32 @@
 
     
     }
-  
+
+    @media (max-width: 991px) {
+
+        .custom-footer { 
+            position: fixed;
+            height: 120px;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        nav {
+            padding: 30px  !important;
+        }
+    
+        .tasks-list {
+            display: block;
+        }
+        
+        .task-item {
+           display:block !important; 
+           width: 90% !important;
+           margin: auto;
+           margin-top:20px;
+           background-color: blue;
+    
+        
+        }
+    }
 }
