@@ -33,7 +33,7 @@ class CustomAccountManager(BaseUserManager):
 
     def create_user(self, email, user_name, first_name, last_name, password, **other_fields):
         if not email:
-            raise ValueError(gettext_lazy('El email es obligatorio !'))
+            raise ValueError(gettext_lazy('Email required !'))
 
         email = self.normalize_email(email)
         user = self.model(email=email, user_name=user_name, first_name=first_name, last_name=last_name,
@@ -69,13 +69,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         invalid_chars_last_name = [ch for ch in self.last_name if not ch.isalnum() or not ch.isalpha()]
         invalid_chars_username = [ch for ch in self.user_name if not ch.isalnum() or ch == '_' or ch == '-']
         if invalid_chars_first_name:
-            raise ValidationError(f'El nombre tiene que contener solo letras,pero contiene: {invalid_chars_first_name}')
+            raise ValidationError(f'The name must contain only letters but contain: {invalid_chars_first_name}')
         if invalid_chars_last_name:
             raise ValidationError(
-                f'El apellido tiene que contener solo letras,pero contiene: {invalid_chars_last_name}')
+                f'The last name  must contain only letters but contain: {invalid_chars_last_name}')
         if invalid_chars_username:
             raise ValidationError(
-                f'El usuario tiene que contener solo letras o numeros: {invalid_chars_username}')
+                f'Username must contain only letters or numbers: {invalid_chars_username}')
 
 
 class Task(models.Model):

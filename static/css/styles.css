@@ -10,10 +10,13 @@ nav {
     font-family: 'Raleway', sans-serif;
 }
 
-/* .container {
-    padding: 0 !important;
-    margin: 0 10% !important;
-} */
+.pagination {
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+
+/* TASKS */
 
 .card {
     border: 0px !important;
@@ -21,10 +24,7 @@ nav {
 
 }
 
-.pagination {
-    margin-top: 30px;
-    margin-bottom: 80px;
-}
+
 
 
 .card-buttons {
@@ -82,9 +82,18 @@ nav {
     
 }
 
+/* FOOTER */
+
 .custom-footer { 
     position: fixed;
     height: 60px;
     bottom: 0;
     width: 100%;
+}
+
+/* FORMS */
+
+.add-task-form {
+    margin-top: 50px;
+    align-items: center;
 }

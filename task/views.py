@@ -7,44 +7,56 @@ from .forms import AddTask, RegisterForm
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
-from django.http import HttpResponseRedirect
-
 
     
 
 
-class HomeView(views.ListView):
+class HomeView(LoginRequiredMixin ,views.ListView):
     template_name = 'tasks/home.html'
+    context_object_name = 'tasks'
     model = Task
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count_incompleted'] = context['tasks'].filter(completed=False).count()
+        context['count_completed'] = context['tasks'].filter(completed=True).count()
         return context
 
 
-class TaskView(views.ListView):
+class TaskView(LoginRequiredMixin ,views.ListView):
     model = Task
     template_name = 'tasks/tasks.html'
     ordering = 'task_date', 'created_at'
-    # paginate_by = 6
+    context_object_name = 'tasks'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count_incompleted'] = context['tasks'].filter(completed=False).count()
+        context['count_completed'] = context['tasks'].filter(completed=True).count()
+        context['incompleted_tasks'] = context['tasks'].filter(completed=False)
+        
         return context
 
-class TaskCompletedView(views.ListView):
+class TaskCompletedView(LoginRequiredMixin,views.ListView):
     model = Task
     template_name = 'tasks/completed-tasks.html'
     ordering = 'task_date', 'created_at'
-    paginate_by = 6
+    context_object_name = 'tasks'
+    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['tasks'] = context['tasks'].filter(user=self.request.user)
+        context['count_incompleted'] = context['tasks'].filter(completed=False).count()
+        context['count_completed'] = context['tasks'].filter(completed=True).count()
+        context['completed_tasks'] = context['tasks'].filter(completed=True)
+        
         return context
             
 
-class AddTaskView(PermissionRequiredMixin, views.FormView):
-    permission_required = ()
+class AddTaskView(LoginRequiredMixin, views.FormView):
     template_name = 'tasks/add-task.html'
     form_class = AddTask
     success_url = '/'
@@ -55,8 +67,7 @@ class AddTaskView(PermissionRequiredMixin, views.FormView):
         return super().form_valid(form)
 
 
-class EditTaskView(PermissionRequiredMixin, views.UpdateView):
-    permission_required = ()
+class EditTaskView(LoginRequiredMixin, views.UpdateView):
     model = Task
     form_class = AddTask
     template_name = 'tasks/add-task.html'
@@ -68,23 +79,8 @@ class DeleteTaskView(LoginRequiredMixin, views.DeleteView):
     template_name = 'tasks/tasks-confirm-delete.html'
     success_url = '/tasks/'
     
-    def delete(self, request, *args, **kwargs):
-       
-        if self.object.user == self.request.user:
-            self.object = self.get_object()
-            success_url = self.get_success_url()
-            self.object.delete()
-            return HttpResponseRedirect(success_url)
-        return HttpResponseRedirect('/login')
-        
-    def get_object(self, queryset=None):
-        task = super(DeleteTaskView, self).get_object(queryset)
-        if task.user != self.request.user:
-             redirect('/tasks')
-        return task
 
-
-class TaskDetailView(TemplateView):
+class TaskDetailView(LoginRequiredMixin,TemplateView):
     template_name = 'tasks/task-details.html'
 
     def get_context_data(self, **kwargs):

@@ -12,7 +12,7 @@ class AddTask(forms.ModelForm):
             'description': 'description',
             'task_date': 'Date of task',
             'task_hour': 'Hour of task',
-            'completed': 'is completed?',
+            'completed': 'Completed',
         }
         
                 
