@@ -3,6 +3,23 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap');
+
+
+/* NAV */
+
+.nav-link {
+    color:white !important;
+}
+
+.nav-link:hover {
+    color:rgb(95, 144, 252) !important;
+    
+}
+
+
+
+
 
 
 nav {
@@ -10,9 +27,16 @@ nav {
     font-family: 'Raleway', sans-serif;
 }
 
+
+/* ------ */
+
 .pagination {
     margin-top: 30px;
     margin-bottom: 80px;
+}
+
+input,textarea {
+        font-family: 'Chakra Petch', sans-serif !important;
 }
 
 
@@ -99,6 +123,11 @@ nav {
 
 /* FORMS */
 
+button {
+    font-family: 'Chakra Petch', sans-serif !important;
+
+}
+
 .add-task-form {
     margin-top: 50px;
     align-items: center;
@@ -120,6 +149,8 @@ nav {
     padding: 1px 20px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    font-family: 'Chakra Petch', sans-serif !important;
+
 }
 
 .form input {

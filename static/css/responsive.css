@@ -17,10 +17,17 @@
         font-size: 10px !important; 
     }
   
+    button {
+        padding:2px;
+    }
+
+    .card-link button {
+        font-size:12px  !important;
+    }
 }
 
 
-@media (max-width: 610px) {
+@media (max-width: 641px) {
 
     .custom-footer { 
         position: fixed;
@@ -47,6 +54,14 @@
     }
     .card-date {
         font-size: 10px !important; 
+    }
+
+    button {
+        padding:2px;
+    }
+
+    .card-link button {
+        font-size:14px  !important;
     }
 
 }

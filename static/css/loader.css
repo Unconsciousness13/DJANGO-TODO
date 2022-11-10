@@ -3,14 +3,17 @@
     left: 50%;
     top: 50%;
     z-index: 1;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     margin: -76px 0 0 -76px;
     border: 16px solid #020201;
     border-radius: 50%;
-    border-top: 16px solid deeppink;
+    border-top: 16px solid rgb(43, 20, 255);
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
+    font-size: 11px;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    color: white;
 }
 
 @-webkit-keyframes spin {
