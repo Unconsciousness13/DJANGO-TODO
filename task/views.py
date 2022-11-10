@@ -1,5 +1,5 @@
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.mixins import  LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from django.views import generic as views
 from django.views.generic import TemplateView
 from .models import Task
@@ -7,6 +7,7 @@ from .forms import AddTask, RegisterForm
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import redirect_to_login
 
     
 
@@ -70,14 +71,23 @@ class AddTaskView(LoginRequiredMixin, views.FormView):
 class EditTaskView(LoginRequiredMixin, views.UpdateView):
     model = Task
     form_class = AddTask
-    template_name = 'tasks/add-task.html'
+    template_name = 'tasks/edit-task.html'
     success_url = '/tasks/'
+    context_object_name = 'tasks'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
+    
 
 
 class DeleteTaskView(LoginRequiredMixin, views.DeleteView):
     model = Task
     template_name = 'tasks/tasks-confirm-delete.html'
     success_url = '/tasks/'
+    context_object_name = 'tasks'
+
     
 
 class TaskDetailView(LoginRequiredMixin,TemplateView):
@@ -105,7 +115,7 @@ class UserRegisterView(gen_views.CreateView):
 
 class UserLoginView(auth_views.LoginView):
     template_name = 'profile/login.html'
-    success_url = reverse_lazy('show index')
+    success_url = reverse_lazy('show_index')
 
     def get_success_url(self):
         if self.success_url:

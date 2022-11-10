@@ -1,10 +1,10 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    <div class="register-all">
+    <div class="register-all" style='text-align: center; margin-top: 20px;'>
     <div id="welcome-message">
         <h1>Welcome to P-Task</h1>
-        <h1>Register</h1>
+        <h1>Register Page</h1>
     </div>
 
     <div class="register-page">
@@ -13,9 +13,7 @@
                 {{ form.as_p }}
                 {% csrf_token %}
                 <div class="center">
-                    <button class="btn">
-                        <span>Confirm</span>
-                    </button>
+                    <button type='confirm' class="btn btn-primary">Register</button>
                 </div>
             </form>
 

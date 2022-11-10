@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    <div id="welcome-message">
+    <div id="welcome-message" style='text-align: center; margin-top: 20px;'>
         <h1>Welcome to P-Task</h1>
         <h1>Register page </h1>
     </div>
@@ -10,8 +10,8 @@
             <form class="login-form" method="POST">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button>Enter</button>
-                <p class="message">Not register? <a href="/register">Register</a></p>
+                <button type='submit' class="btn btn-primary">Enter</button>
+                <p class="message message-login">Not register? <a href="{% url 'register_page' %}">Register</a></p>
                 {% comment %} <p class="message">Forgoten password? <a href="{% url 'password_reset' %}">Forgot password?</a> {% endcomment %}
                 </p>
             </form>

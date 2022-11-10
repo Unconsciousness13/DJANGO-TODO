@@ -1,13 +1,20 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
-    <div class="form">
+<div class=container>
+    {% if request.user.is_authenticated and tasks.user == request.user %}
+    <div class="form" data-aos="flip-down" data-aos-duration="1000">
         <h1>Delete Task</h1>
         <form method="post">{% csrf_token %}
-            <p>Are you sure to delete the task? <h2>{{ task.title }} ?</h2></p>
+            <p>Are you sure to delete the task? <h2>{{ tasks.title }} ?</h2></p>
             <div class="center">
                 <button type="confim" class="btn btn-danger"><i className="fa-solid fa-trash-can"></i>Delete</button>
             </div>
         </form>
     </div>
+    {% else %}
+    <h1 class='text-center' style='margin-top:20px'>Don`t try to <span style='color:red'>CHEAT</span> !</h1>
+    {% endif %}
+    
+</div>
 {% endblock %}

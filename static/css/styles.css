@@ -82,6 +82,11 @@ nav {
     
 }
 
+.task-item:last-child {
+    margin-bottom: 100px;
+    
+}
+
 /* FOOTER */
 
 .custom-footer { 
@@ -89,6 +94,7 @@ nav {
     height: 60px;
     bottom: 0;
     width: 100%;
+    margin-top: 150px !important;
 }
 
 /* FORMS */
@@ -96,4 +102,65 @@ nav {
 .add-task-form {
     margin-top: 50px;
     align-items: center;
+    margin-bottom: 100px;
+}
+
+.register-form {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+
+.form {
+    top: 20px;
+    position: relative;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: auto;
+    padding: 1px 20px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.form textarea {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.message-login {
+    margin-top:10px;
+} 
+ 
+.helptext {
+    display: none;
+} 
+
+ .register-form ul {
+    display: none;
+}
+
+/* NAV */
+
+.go-right {
+    display: inline;
+    position: absolute;
+    right: 10%;
+    top:0;
 }

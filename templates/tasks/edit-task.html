@@ -2,6 +2,7 @@
 {% load static %}
 {% block dynamic_content %}
 <div class=container>
+    {% if request.user.is_authenticated and tasks.user == request.user %}
     <div class="form" data-aos="flip-down" data-aos-duration="1000">
         <form method="POST" class="add-task-form" enctype="multipart/form-data">
             {{ form.as_p }}
@@ -11,6 +12,10 @@
             </div>
         </form>
     </div>        
+    {% else %}
+    <h1 class='text-center' style='margin-top:20px'>Don`t try to <span style='color:red'>CHEAT</span> !</h1>
+    {% endif %}
+    
         
     </div>
 

@@ -3,20 +3,26 @@ from .models import Task
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 class AddTask(forms.ModelForm):
     class Meta:
         model = Task
         fields = ('title', 'description', 'task_date', 'task_hour',  'completed', )
         labels = {
-            'title': 'title',
-            'description': 'description',
+            'title': 'Title',
+            'description': 'Description',
             'task_date': 'Date of task',
             'task_hour': 'Hour of task',
             'completed': 'Completed',
         }
-        
-                
-
+        widgets = {
+            'task_date': DateInput(),
+            'task_hour': forms.TextInput(attrs={'type':'time'}),
+        }
+ 
 
 
 from django import forms
