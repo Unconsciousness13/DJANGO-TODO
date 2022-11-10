@@ -22,6 +22,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['p-task.up.railway.app', '127.0.0.1',]
 
+CSRF_TRUSTED_ORIGINS = ['p-task.up.railway.app']
+
 
 # Application definition
 
