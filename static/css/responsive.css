@@ -12,6 +12,10 @@
        width: 100%;
     
     }
+
+    .card-date {
+        font-size: 10px !important; 
+    }
   
 }
 
@@ -41,7 +45,11 @@
 
     
     }
+    .card-date {
+        font-size: 10px !important; 
+    }
 
+}
     @media (max-width: 991px) {
 
         .custom-footer { 
@@ -69,4 +77,3 @@
         
         }
     }
-}
