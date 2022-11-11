@@ -128,10 +128,15 @@ input,textarea {
 
 .custom-footer { 
     position: fixed;
-    height: 60px;
+    height: 80px;
     bottom: 0;
     width: 100%;
     margin-top: 150px !important;
+}
+
+.copyright {
+    text-decoration: none;
+    color:rgb(95, 144, 252)
 }
 
 /* FORMS */
