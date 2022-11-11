@@ -128,8 +128,11 @@ class UserRegisterView(gen_views.CreateView):
 class UserLoginView(auth_views.LoginView):
     template_name = 'profile/login.html'
     success_url = reverse_lazy('show_index')
-
+    redirect_authenticated_user = True
+    
     def get_success_url(self):
         if self.success_url:
             return self.success_url
         return super().get_success_url()
+    
+    
