@@ -226,8 +226,14 @@ button {
 }
 
 .home-image {
+    margin-top:5%;
     max-width:70%;
     max-height:60%;
     margin-bottom: 5%;
     
+}
+
+.navbar-image {
+    width: 152px;
+    height: 35px;
 }
