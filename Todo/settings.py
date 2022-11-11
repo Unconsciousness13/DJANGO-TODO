@@ -80,12 +80,11 @@ if APP_ENVIRONMENT == 'Production':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'DATABASE_URL': os.getenv('DATABASE_URL'),
-            'PGHOST': os.getenv('PGHOST'),
-            'PGPORT': os.getenv('PGPORT'),
-            'PGDATABASE': os.getenv('PGDATABASE'),
-            'PGUSER': os.getenv('PGUSER'),
-            'PGPASSWORD': os.getenv('PGPASSWORD'),
+            'HOST': os.getenv('PGHOST'),
+            'PORT': os.getenv('PGPORT'),
+            'NAME': os.getenv('PGDATABASE'),
+            'USER': os.getenv('PGUSER'),
+            'PASSWORD': os.getenv('PGPASSWORD'),
 
         },
     }
