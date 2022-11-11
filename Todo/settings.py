@@ -24,6 +24,7 @@ ALLOWED_HOSTS = ['p-task.up.railway.app', '127.0.0.1',]
 
 CSRF_TRUSTED_ORIGINS = ['https://p-task.up.railway.app' , ]
 
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 
 # Application definition
 
@@ -74,17 +75,34 @@ WSGI_APPLICATION = 'Todo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-     'default': {
+if APP_ENVIRONMENT == 'Production':
+
+    DATABASES = {
+        'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'HOST': os.getenv('PGHOST'),
-            'PORT': os.getenv('PGPORT'),
-            'NAME': os.getenv('PGDATABASE'),
-            'USER': os.getenv('PGUSER'),
-            'PASSWORD': os.getenv('PGPASSWORD'),
+            'DATABASE_URL': os.getenv('DATABASE_URL'),
+            'PGHOST': os.getenv('PGHOST'),
+            'PGPORT': os.getenv('PGPORT'),
+            'PGDATABASE': os.getenv('PGDATABASE'),
+            'PGUSER': os.getenv('PGUSER'),
+            'PGPASSWORD': os.getenv('PGPASSWORD'),
 
         },
-}
+    }
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('DB_ENGINE'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        },
+
+    }
+
 
 
 # Password validation
