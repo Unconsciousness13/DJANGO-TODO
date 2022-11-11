@@ -128,4 +128,8 @@
         .search-form {
             width: 90%;
         }
+
+        #navbarNav > ul > li:nth-child(1) {
+            margin-top:10px;
+        }
     }

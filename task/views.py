@@ -40,8 +40,8 @@ class TaskView(LoginRequiredMixin ,views.ListView):
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['incompleted_tasks'] = context['tasks'].filter(
-                title__icontains=search_input)
+            context['incompleted_tasks'] = context['tasks'].filter(title__icontains = search_input) or context['tasks'].filter(description__icontains = search_input)
+            
                    
         context['search_input'] = search_input
         return context
@@ -62,8 +62,7 @@ class TaskCompletedView(LoginRequiredMixin,views.ListView):
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
-            context['completed_tasks'] = context['tasks'].filter(
-                title__icontains=search_input)
+            context['completed_tasks'] = context['tasks'].filter(title__icontains = search_input) or context['tasks'].filter(description__icontains = search_input)
                    
         context['search_input'] = search_input
         
