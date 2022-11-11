@@ -42,10 +42,16 @@
         </div>
       </nav>
 </header>
+
+
+
 <div class='container'>
+    <form class="search-form" method="GET">
+        <input type="text" name='search-area' value="{{search_input}}" />
+        <input type="submit" value="Search" />
+    </form>    
     <div class='tasks-list'>
 {% for task in incompleted_tasks %}
-    
     <div class='task-item' data-aos="flip-down" data-aos-duration="1000">    
         <div class="card">
             <div class="card-body">
@@ -59,13 +65,11 @@
                 <a href="{% url 'task_delete' task.pk %}" class="card-link"><button type="button" class="btn btn-danger button-edit-delete"><i class="fa-solid fa-trash-can"></i> Delete</button></a>
             </div>
             <p class="card-date">{{ task.task_date|date:"l d M Y" }} | {{ task.task_hour }}</p>
-           
-            
          </div>
         </div>
     </div> 
     {% empty %}
-    <h1 style="text-align:right !important; margin-top: 50px;">You don`t have tasks!</h1>
+    <h1 style="text-align:right !important; margin-top: 50px;">Task list is empty !</h1>
     {% endfor %}       
     </div>
    

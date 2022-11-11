@@ -110,11 +110,12 @@ input,textarea {
 
 .task-item {
     flex: 40%;
-    margin-left:15px;
-    margin-top: 15px;
-    
+    margin-top: 15px; 
 }
 
+.task-item:nth-child(even) {
+    margin-left:15px;
+}
 .task-item:last-child {
     margin-bottom: 100px;
     
@@ -203,6 +204,16 @@ button {
 
  .register-form ul {
     display: none;
+}
+
+.search-form {
+    margin: 0 auto;
+    margin-top:30px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    background-color: black;
+    border-radius: 5px;
 }
 
 /* NAV */
