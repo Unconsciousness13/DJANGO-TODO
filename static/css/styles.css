@@ -18,16 +18,24 @@
 }
 
 
-
-
-
-
 nav {
     padding: 10px 15%  !important;
     font-family: 'Raleway', sans-serif;
 }
 
+.nav-right {
+    position: absolute;
+    right:15%;
+    display: flex;
+    flex-direction: row;
+    top:10px;
+}
 
+
+.active {
+    color:rgb(0, 0, 0) !important;
+    background-color: azure;
+}
 /* ------ */
 
 .pagination {
@@ -38,6 +46,7 @@ nav {
 input,textarea {
         font-family: 'Chakra Petch', sans-serif !important;
 }
+
 
 
 /* TASKS */
@@ -109,6 +118,10 @@ input,textarea {
 .task-item:last-child {
     margin-bottom: 100px;
     
+}
+
+.delete-container {
+    padding: 20px;
 }
 
 /* FOOTER */

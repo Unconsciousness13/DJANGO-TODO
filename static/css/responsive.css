@@ -4,6 +4,13 @@
         padding: 10px !important;
     }
 
+    .nav-right {
+        display: block;
+        position: relative;
+        text-align: left;
+        margin-left: 10%;
+    }
+
     .tasks-list {
         display: block;
     }
@@ -21,7 +28,7 @@
         padding:2px;
     }
 
-     button {
+    .button-edit-delete {
         font-size:12px  !important;
         padding:5px !important;
 
@@ -30,6 +37,13 @@
 
 
 @media (max-width: 641px) {
+
+    .nav-right {
+        display: block;
+        position: relative;
+        text-align: left;
+        margin-left: 10%;
+    }
 
     .custom-footer { 
         position: fixed;
@@ -45,7 +59,7 @@
     .tasks-list {
         display: block;
     }
-    
+
     .task-item {
        display:block !important; 
        width: 90%;
@@ -58,7 +72,7 @@
         font-size: 10px !important; 
     }
 
-    button {
+    .button-edit-delete {
         padding:5px !important;
         font-size: 12px !important;
     }
@@ -69,6 +83,12 @@
 
 }
     @media (max-width: 991px) {
+        .nav-right {
+            display: block;
+            position: relative;
+            text-align: left;
+            margin-left: 10%;
+        }
 
         .custom-footer { 
             position: fixed;

@@ -3,7 +3,45 @@
 {% block dynamic_content %}
 
 
-
+<header class="header">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        
+          <a class="navbar-brand" href="/">P-Task</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            {% if user.is_active %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/tasks">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/task-completed">Completed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/addtask">Add Task</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link nav-right" href="/logout">Logout</a>
+                </li>
+              {% endif %}
+              {% if not user.is_active %}
+              <div class='nav-right'>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/login">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+              </div>  
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
 <div class='container'>
     <div class='tasks-list'>
 {% for task in incompleted_tasks %}
@@ -17,8 +55,8 @@
             
             <div class='card-buttons'>
                 
-                <a href="{% url 'task_edit' task.pk %}" class="card-link"><button type="button" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i>  Edit </button></a>
-                <a href="{% url 'task_delete' task.pk %}" class="card-link"><button type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></a>
+                <a href="{% url 'task_edit' task.pk %}" class="card-link"><button type="button" class="btn btn-primary button-edit-delete"><i class="fa-solid fa-pen-to-square"></i>  Edit </button></a>
+                <a href="{% url 'task_delete' task.pk %}" class="card-link"><button type="button" class="btn btn-danger button-edit-delete"><i class="fa-solid fa-trash-can"></i> Delete</button></a>
             </div>
             <p class="card-date">{{ task.task_date|date:"l d M Y" }} | {{ task.task_hour }}</p>
            

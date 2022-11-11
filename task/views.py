@@ -60,7 +60,7 @@ class TaskCompletedView(LoginRequiredMixin,views.ListView):
 class AddTaskView(LoginRequiredMixin, views.FormView):
     template_name = 'tasks/add-task.html'
     form_class = AddTask
-    success_url = '/'
+    success_url = '/tasks/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
