@@ -20,7 +20,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/addtask">Add Task</a>
                 </li>
-    
+                 {% comment %} dropdown {% endcomment %}
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/home-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
+                      <li><a class="dropdown-item" href="/home-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Bulgarian</a></li>
+                    </ul>
+                  </li>
+  
+  
+                  {% comment %} end dropdown {% endcomment %}
                 <li class="nav-item">
                     <a class="nav-link nav-right" href="/logout">Logout</a>
                 </li>

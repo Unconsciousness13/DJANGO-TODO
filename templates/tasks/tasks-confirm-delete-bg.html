@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+<header class="header">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        
+          <a class="navbar-brand" href="/home-bg"><img class="navbar-image" src="{%  static 'images/task1.png' %}" alt="navbar-logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            {% if user.is_active %}
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/tasks-bg">Задачи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/task-completed-bg">Завършени</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/addtask-bg">Добави задача</a>
+                </li>
+                {% comment %} dropdown {% endcomment %}
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/home-es" role="button" aria-expanded="false">
+                  <img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"> English</a></li>
+                  <li><a class="dropdown-item" href="/home-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanish</a></li>
+                </ul>
+              </li>
+               {% comment %} end dropdown {% endcomment %}
+                <li class="nav-item">
+                    <a class="nav-link nav-right" href="/logout">Изход</a>
+                </li>
+              {% endif %}
+              {% if not user.is_active %}
+              <div class='nav-right'>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/login">Вход</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/register">Регистрация</a>
+                </li>
+              </div>  
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+
+<div class=container>
+    {% if request.user.is_authenticated and tasks.user == request.user %}
+    <div class="form" data-aos="flip-down" data-aos-duration="1000">
+        <h1>Триене на задача</h1>
+        <form method="post">{% csrf_token %}
+            <p>Сигурни ли сте ,че искате да изтриете задача <h2>{{ tasks.title }} ?</h2></p>
+            <div class="center delete-container">
+                <button type="confim" class="btn btn-danger"><i className="fa-solid fa-trash-can"></i>Изтрии</button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <h1 class='text-center' style='margin-top:20px'>Не се опитвай да
+        <span style='color:red'>Мамиш 
+        </span> !</h1>
+    {% endif %}
+    
+</div>
+{% endblock %}

@@ -10,17 +10,16 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                {% comment %} dropdown {% endcomment %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/login-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
-                      <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Bulgarian</a></li>
-                    </ul>
-                  </li>
-  
-  
-                  {% comment %} end dropdown {% endcomment %}
+                 {% comment %} dropdown {% endcomment %}
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/home-es" role="button" aria-expanded="false">
+                  <img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/login"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"> English</a></li>
+                  <li><a class="dropdown-item" href="/login-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanish</a></li>
+                </ul>
+              </li>
+               {% comment %} end dropdown {% endcomment %}
             {% if user.is_active %}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/tasks">Tasks</a>
@@ -31,6 +30,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/addtask">Add Task</a>
                 </li>
+    
                 <li class="nav-item">
                     <a class="nav-link nav-right" href="/logout">Logout</a>
                 </li>
@@ -38,10 +38,10 @@
               {% if not user.is_active %}
               <div class='nav-right'>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    <a class="nav-link active" aria-current="page" href="/login-bg">Вход</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="/register-bg">Регистрация</a>
                 </li>
               </div>  
               {% endif %}
@@ -51,16 +51,16 @@
       </nav>
 </header>
     <div id="welcome-message" style='text-align: center; margin-top: 20px;'>
-        <h1>Welcome to P-Task</h1>
-        <h1>Login page </h1>
+        <h1>Добре дошли в P-Task</h1>
+        <h1>Вход </h1>
     </div>
     <div class="login-page">
         <div class="form">
             <form class="login-form" method="POST">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button type='submit' class="btn btn-primary">Enter</button>
-                <p class="message message-login">Not register? <a href="{% url 'register_page' %}">Register</a></p>
+                <button type='submit' class="btn btn-primary">Вход</button>
+                <p class="message message-login">Нямата регистрация? <a href="{% url 'register_page_bg' %}">Регистрация</a></p>
                 {% comment %} <p class="message">Forgoten password? <a href="{% url 'password_reset' %}">Forgot password?</a> {% endcomment %}
                 </p>
             </form>

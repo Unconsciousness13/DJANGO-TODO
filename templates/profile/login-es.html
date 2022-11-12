@@ -4,44 +4,47 @@
 <header class="header">
     <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
         
-          <a class="navbar-brand" href="/"><img class="navbar-image" src="{%  static 'images/task1.png' %}" alt="navbar-logo" /></a>
+          <a class="navbar-brand" href="/home-es"><img class="navbar-image" src="{%  static 'images/task1.png' %}" alt="navbar-logo" /></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% comment %} dropdown {% endcomment %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/login-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
-                      <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Bulgarian</a></li>
-                    </ul>
-                  </li>
-  
-  
-                  {% comment %} end dropdown {% endcomment %}
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/home-es" role="button" aria-expanded="false">
+                  <img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/login"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"> English</a></li>
+                  <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Bulgarian</a></li>
+                </ul>
+              </li>
+
+
+              {% comment %} end dropdown {% endcomment %}
             {% if user.is_active %}
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/tasks">Tasks</a>
+                    <a class="nav-link" aria-current="page" href="/tasks-es">Tareas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/task-completed">Completed</a>
+                    <a class="nav-link" href="/task-completed-es">Completas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/addtask">Add Task</a>
+                    <a class="nav-link " href="/addtask-es">Agregar tarea</a>
                 </li>
+              
                 <li class="nav-item">
-                    <a class="nav-link nav-right" href="/logout">Logout</a>
+                    <a class="nav-link nav-right" href="/logout">Cerrar sesión
+                    </a>
                 </li>
               {% endif %}
               {% if not user.is_active %}
               <div class='nav-right'>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    <a class="nav-link active" aria-current="page" href="/login">Acceso</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="/register">Registro</a>
                 </li>
               </div>  
               {% endif %}
