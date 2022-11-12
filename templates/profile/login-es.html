@@ -16,7 +16,7 @@
                   <img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"></a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/login"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"> English</a></li>
-                  <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Bulgarian</a></li>
+                  <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
                 </ul>
               </li>
 
@@ -54,16 +54,17 @@
       </nav>
 </header>
     <div id="welcome-message" style='text-align: center; margin-top: 20px;'>
-        <h1>Welcome to P-Task</h1>
-        <h1>Login page </h1>
+        <h1>Bienvenidos a P-Task</h1>
+        <h1>Página de inicio de sesión
+        </h1>
     </div>
     <div class="login-page">
         <div class="form">
             <form class="login-form" method="POST">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button type='submit' class="btn btn-primary">Enter</button>
-                <p class="message message-login">Not register? <a href="{% url 'register_page' %}">Register</a></p>
+                <button type='submit' class="btn btn-primary">Ingresar</button>
+                <p class="message message-login">¿No registrado? <a href="{% url 'register_page' %}">Registro</a></p>
                 {% comment %} <p class="message">Forgoten password? <a href="{% url 'password_reset' %}">Forgot password?</a> {% endcomment %}
                 </p>
             </form>
