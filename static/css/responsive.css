@@ -28,7 +28,7 @@
     }
 
     .card-date {
-        font-size: 10px !important; 
+        font-size: 8px !important; 
     }
   
     button {
@@ -36,7 +36,7 @@
     }
 
     .button-edit-delete {
-        font-size:12px  !important;
+        font-size:10px  !important;
         padding:5px !important;
 
     }
@@ -87,7 +87,7 @@
     }
 
     .card-link button {
-        font-size:14px  !important;
+        font-size:12px  !important;
     }
 
 }
@@ -132,4 +132,6 @@
         #navbarNav > ul > li:nth-child(1) {
             margin-top:10px;
         }
+        .card-date {
+            font-size: 12px !important; }
     }

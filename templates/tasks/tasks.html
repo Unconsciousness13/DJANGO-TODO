@@ -26,8 +26,8 @@
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/home-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
-                      <li><a class="dropdown-item" href="/home-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
+                      <li><a class="dropdown-item" href="/tasks-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
+                      <li><a class="dropdown-item" href="/tasks-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
                     </ul>
                   </li>
   
@@ -74,7 +74,7 @@
                 <a href="{% url 'task_edit' task.pk %}" class="card-link"><button type="button" class="btn btn-primary button-edit-delete"><i class="fa-solid fa-pen-to-square"></i>  Edit </button></a>
                 <a href="{% url 'task_delete' task.pk %}" class="card-link"><button type="button" class="btn btn-danger button-edit-delete"><i class="fa-solid fa-trash-can"></i> Delete</button></a>
             </div>
-            <p class="card-date">{{ task.task_date|date:"l d M Y" }} | {{ task.task_hour }}</p>
+            <p class="card-date">{{ task.task_date|date:"d M Y" }} | {{ task.task_hour }}</p>
          </div>
         </div>
     </div> 

@@ -77,6 +77,12 @@ class RegisterFormEs(UserCreationForm):
                   'email',
                   'password1',
                   'password2',)
+        labels = {'user_name': 'Usuario',
+                  'first_name': 'Nombre',
+                  'last_name': 'Apellido',
+                  'email': 'Correo electronico',
+                  'password1': 'Contraseña',
+                  'password2': 'Confirmar Contraseña'}
         
 class RegisterFormBg(UserCreationForm):
     class Meta:
@@ -87,6 +93,13 @@ class RegisterFormBg(UserCreationForm):
                   'email',
                   'password1',
                   'password2',)
+        
+        labels = {'user_name': 'Потребителско име',
+                  'first_name': 'Име',
+                  'last_name': 'Фамилия',
+                  'email': 'Електронна поща',
+                  'password1': 'Парола',
+                  'password2': 'Потвърди парола'}
 
 
 class UpdateForm(forms.ModelForm):
