@@ -1,0 +1,137 @@
+
+@media (max-width: 410px) {
+    nav {
+        padding: 10px !important;
+    }
+
+    .nav-right {
+        display: block;
+        position: relative;
+        text-align: left;
+        margin-left: 15%;
+        margin-top:10px;
+
+    }
+
+    .copyright {
+        text-decoration: none;
+        color:rgb(95, 144, 252);
+        font-size: 14px;
+    }
+    .tasks-list {
+        display: block;
+    }
+    
+    .task-item {
+       width: 100%;
+    
+    }
+
+    .card-date {
+        font-size: 8px !important; 
+    }
+  
+    button {
+        padding:2px;
+    }
+
+    .button-edit-delete {
+        font-size:10px  !important;
+        padding:5px !important;
+
+    }
+}
+
+
+@media (max-width: 641px) {
+
+    .nav-right {
+        display: block;
+        position: relative;
+        text-align: left;
+        margin-left: 15%;
+        margin-top:10px;
+
+    }
+
+    .custom-footer { 
+        position: fixed;
+        height: 120px;
+        bottom: 0;
+        width: 100%;
+    }
+
+    nav {
+        padding: 30px  !important;
+    }
+
+    .tasks-list {
+        display: block;
+    }
+
+    .task-item {
+       display:block !important; 
+       width: 90%;
+       margin: auto;
+       margin-top:20px;
+
+    
+    }
+    .card-date {
+        font-size: 10px !important; 
+    }
+
+    .button-edit-delete {
+        padding:5px !important;
+        font-size: 12px !important;
+    }
+
+    .card-link button {
+        font-size:12px  !important;
+    }
+
+}
+    @media (max-width: 991px) {
+        .nav-right {
+            display: block;
+            position: relative;
+            text-align: left;
+            margin-left: 15%;
+            margin-top:10px;
+        }
+
+        .custom-footer { 
+            position: fixed;
+            height: 80px;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        nav {
+            padding: 15px  !important;
+        }
+    
+        .tasks-list {
+            display: block;
+        }
+        
+        .task-item {
+           display:block !important; 
+           width: 90% !important;
+           margin: auto;
+           margin-top:20px;
+           background-color: blue;
+    
+        
+        }
+
+        .search-form {
+            width: 90%;
+        }
+
+        #navbarNav > ul > li:nth-child(1) {
+            margin-top:10px;
+        }
+        .card-date {
+            font-size: 12px !important; }
+    }

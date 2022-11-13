@@ -7,7 +7,7 @@ from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg ,
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.views import redirect_to_login
+from django.shortcuts import  render
 
     
 
@@ -256,6 +256,7 @@ class UserLoginViewEs(auth_views.LoginView):
         return super().get_success_url()
 
 
+
 # BG
 
 class HomeViewBg(LoginRequiredMixin ,views.ListView):
@@ -361,3 +362,19 @@ class UserLoginViewBg(auth_views.LoginView):
         if self.success_url:
             return self.success_url
         return super().get_success_url()
+    
+    
+    
+# // Errors views //
+def handler404(request, exception):
+    context = {}
+    response = render(request, "tasks/not-exist.html", context=context)
+    response.status_code = 404
+    return response
+
+
+def handler500(request):
+    context = {}
+    response = render(request, "tasks/not-exist.html", context=context)
+    response.status_code = 500
+    return response
