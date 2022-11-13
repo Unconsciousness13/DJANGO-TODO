@@ -15,8 +15,10 @@ urlpatterns = [
     path('task/delete/<int:pk>/', views.DeleteTaskView.as_view(), name='task_delete'),
     path('task-completed/' , views.TaskCompletedView.as_view(), name='tasks_completed_view'),
     # ES
+    
     path('login-es/', views.UserLoginViewEs.as_view(), name='login_page_es'),
     path('register-es/', views.UserRegisterViewEs.as_view(), name='register_page_es'),
+    path('logout-es/', auth_views.LogoutView.as_view(next_page=reverse_lazy('login_page_es')), name='logout_es'),
     path('home-es/', views.HomeViewEs.as_view(), name='show_index_es'),
     path('addtask-es/', views.AddTaskViewEs.as_view(), name='add_task_es'),
     path('tasks-es/', views.TaskViewEs.as_view(), name='tasks_view_es'),
@@ -26,6 +28,7 @@ urlpatterns = [
     # BG
     path('login-bg/', views.UserLoginViewBg.as_view(), name='login_page_bg'),
     path('register-bg/', views.UserRegisterViewBg.as_view(), name='register_page_bg'),
+    path('logout-bg/', auth_views.LogoutView.as_view(next_page=reverse_lazy('login_page_bg')), name='logout_bg'),
     path('home-bg/', views.HomeViewBg.as_view(), name='show_index_bg'),
     path('addtask-bg/', views.AddTaskViewBg.as_view(), name='add_task_bg'),
     path('tasks-bg/', views.TaskViewBg.as_view(), name='tasks_view_bg'),

@@ -1,0 +1,73 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block dynamic_content %}
+<header class="header">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
+        
+          <a class="navbar-brand" href="/home-bg"><img class="navbar-image" src="{%  static 'images/task1.png' %}" alt="navbar-logo" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                 {% comment %} dropdown {% endcomment %}
+               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/home-es" role="button" aria-expanded="false">
+                  <img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"></a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"> English</a></li>
+                  <li><a class="dropdown-item" href="/home-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanish</a></li>
+                </ul>
+              </li>
+               {% comment %} end dropdown {% endcomment %}
+            {% if user.is_active %}
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/tasks-bg">Задачи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/task-completed-bg">Завършени</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/addtask-bg">Добави задача</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link nav-right" href="/logout">Изход</a>
+                </li>
+              {% endif %}
+              {% if not user.is_active %}
+              <div class='nav-right'>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/login-bg">Вход</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/register-bg">Регистрация</a>
+                </li>
+              </div>  
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+
+    <div class="register-all" style='text-align: center; margin-top: 20px;'>
+    <div id="welcome-message">
+        <h1>Добре дошли в P-Task</h1>
+        <h1>Регистрация</h1>
+    </div>
+
+    <div class="register-page">
+        <div class="form">
+            <form method="POST" class="register-form" enctype="multipart/form-data">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <div class="center">
+                    <button type='confirm' class="btn btn-primary">Регистрация</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

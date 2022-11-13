@@ -242,7 +242,7 @@ class DeleteTaskViewEs(LoginRequiredMixin, views.DeleteView):
 class UserRegisterViewEs(gen_views.CreateView):
     form_class = RegisterFormEs
     success_url = reverse_lazy('login_page_es')
-    template_name = 'profile/register.html'
+    template_name = 'profile/register-es.html'
 
 
 class UserLoginViewEs(auth_views.LoginView):
@@ -349,7 +349,7 @@ class DeleteTaskViewBg(LoginRequiredMixin, views.DeleteView):
 class UserRegisterViewBg(gen_views.CreateView):
     form_class = RegisterFormBg
     success_url = reverse_lazy('login_page_bg')
-    template_name = 'profile/register.html'
+    template_name = 'profile/register-bg.html'
 
 
 class UserLoginViewBg(auth_views.LoginView):
