@@ -83,7 +83,7 @@ class Task(models.Model):
     title = models.CharField(max_length=100, blank=False)
     description = models.TextField(max_length=555)
     task_date = models.DateField(auto_now=False, blank=False)
-    task_hour = models.TimeField(auto_now=False, blank=True)
+    task_hour = models.TimeField(auto_now=False, blank=False)
     created_at = models.DateField(auto_now=True)
     completed = models.BooleanField(default=False)
 
