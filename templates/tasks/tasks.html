@@ -67,7 +67,7 @@
             <div class="card-body">
             <h5 class="card-title">{{ task.title }}</h5>
             {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
-            <p class="card-text">{{ task.description }}</p>
+            <p class="card-text">{{ task.description|linebreaks }}</p>
             
             <div class='card-buttons'>
                 
