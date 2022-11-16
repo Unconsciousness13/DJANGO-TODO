@@ -30,6 +30,7 @@
                       <li><a class="dropdown-item" href="/tasks-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
                     </ul>
                   </li>
+                 
   
   
                   {% comment %} end dropdown {% endcomment %}
@@ -56,16 +57,21 @@
 
 
 <div class='container'>
+    
     <form class="search-form" method="GET">
+        
         <input type="text" name='search-area' value="{{search_input}}" />
         <input type="submit" value="Search" />
-    </form>    
+       
+    </form>
+  
     <div class='tasks-list'>
 {% for task in incompleted_tasks %}
     <div class='task-item' data-aos="flip-down" data-aos-duration="1000">    
         <div class="card">
             <div class="card-body">
-            <h5 class="card-title">{{ task.title }}</h5>
+            <h5 class="card-title">{{ task.title|title }}</h5>
+            
             {% comment %} <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> {% endcomment %}
             <p class="card-text">{{ task.description|linebreaks }}</p>
             
@@ -74,7 +80,7 @@
                 <a href="{% url 'task_edit' task.pk %}" class="card-link"><button type="button" class="btn btn-primary button-edit-delete"><i class="fa-solid fa-pen-to-square"></i>  Edit </button></a>
                 <a href="{% url 'task_delete' task.pk %}" class="card-link"><button type="button" class="btn btn-danger button-edit-delete"><i class="fa-solid fa-trash-can"></i> Delete</button></a>
             </div>
-            <p class="card-date">{{ task.task_date|date:"d M Y" }} | {{ task.task_hour }}</p>
+            <p class="card-date">{{ task.task_date|date:"d M Y" }} | {{ task.task_hour|time:"H\h i\m" }}</p>
          </div>
         </div>
     </div> 
