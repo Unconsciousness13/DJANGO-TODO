@@ -8,6 +8,7 @@ from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
 from django.shortcuts import  render
+from django.contrib import messages
 
     
 
@@ -123,6 +124,7 @@ class UserRegisterView(gen_views.CreateView):
     form_class = RegisterForm
     success_url = reverse_lazy('login_page')
     template_name = 'profile/register.html'
+    
 
 
 class UserLoginView(auth_views.LoginView):

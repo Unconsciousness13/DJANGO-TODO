@@ -156,6 +156,11 @@ button {
 .register-form {
     text-align: center;
     margin-bottom: 100px;
+    display: block;
+}
+
+.register-form ul {
+    display: block;
 }
 
 
@@ -198,13 +203,10 @@ button {
     margin-top:10px;
 } 
  
-.helptext {
-    display: none;
+.errorlist {
+    display: inline;
 } 
 
- .register-form ul {
-    display: none;
-}
 
 .search-form {
     margin: 0 auto;
@@ -239,7 +241,7 @@ button {
 }
 
 .navbar-flags {
-    width:25px;
-    height:15px;
+    width: 25px;
+    height: 15px;
 }
 
