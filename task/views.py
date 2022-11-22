@@ -2,13 +2,13 @@ from django.contrib.auth.mixins import  LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.views import generic as views
 from django.views.generic import TemplateView
-from .models import Task
-from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg , RegisterFormEs
+from .models import Task, CustomUser
+from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg , RegisterFormEs , UpdateForm
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
-from django.shortcuts import  render
-from django.contrib import messages
+from django.shortcuts import  render,redirect
+
 
     
 
@@ -364,8 +364,50 @@ class UserLoginViewBg(auth_views.LoginView):
         if self.success_url:
             return self.success_url
         return super().get_success_url()
-    
-    
+# PROFILE
+
+class ProfilePageView(TemplateView):
+    template_name = 'profile/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProfilePageView, self).get_context_data(**kwargs)
+        profile = CustomUser.objects.get(pk=self.request.user.pk)
+        context['profile'] = profile
+        return context
+
+
+def profile_edit(request, pk):
+    profile = CustomUser.objects.get(pk=pk)
+
+    if request.user.pk == profile.pk:
+        if request.method == 'POST':
+            form = UpdateForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                return redirect('profile_view')
+        else:
+            form = UpdateForm(instance=profile)
+
+        context = {
+            'form': form,
+            'pk': pk,
+            'profile': profile,
+        }
+        return render(request, 'profile/profile-edit.html', context)
+
+
+class DeleteProfileView(views.DeleteView):
+    model = CustomUser
+    template_name = 'profile/profile-delete-confirm.html'
+    success_url = '/login'
+
+    def get_queryset(self):
+        owner = self.request.user.pk
+        try:
+            if owner == self.request.user.pk:
+                return self.model.objects.filter(pk=owner)
+        except:
+            redirect('tasks/not-exist.html')
     
 # // Errors views //
 def handler404(request, exception):

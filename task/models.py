@@ -91,3 +91,6 @@ class Task(models.Model):
         return self.title
     
     
+class UsersGroup(models.Model):
+    name = models.CharField(max_length=55)
+    

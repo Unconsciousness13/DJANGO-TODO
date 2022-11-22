@@ -1,3 +1,5 @@
+
+
 {% extends 'base/base.html' %}
 {% load static %}
 {% block dynamic_content %}
@@ -10,17 +12,6 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                {% comment %} dropdown {% endcomment %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/login-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanish</a></li>
-                      <li><a class="dropdown-item" href="/login-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
-                    </ul>
-                  </li>
-  
-  
-                  {% comment %} end dropdown {% endcomment %}
             {% if user.is_active %}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/tasks">Tasks</a>
@@ -31,6 +22,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/addtask">Add Task</a>
                 </li>
+                {% comment %} dropdown {% endcomment %}
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/" role="button" aria-expanded="false"><img  class="navbar-flags" src="{% static 'images/enflag.png' %}" alt="en-flag"></a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/home-es"><img  class="navbar-flags flag-es" src="{% static 'images/esflag.png' %}" alt="es-flag"> Spanis</a></li>
+                    <li><a class="dropdown-item" href="/home-bg"><img  class="navbar-flags" src="{% static 'images/bgflag.png' %}" alt="bg-flag"> Български</a></li>
+                  </ul>
+                </li>
+
+
+                {% comment %} end dropdown {% endcomment %}
                 <li class="nav-item">
                     <a class="nav-link nav-right" href="/logout">Logout</a>
                 </li>
@@ -38,7 +40,7 @@
               {% if not user.is_active %}
               <div class='nav-right'>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    <a class="nav-link" aria-current="page" href="/login">Login</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="/register">Register</a>
@@ -50,20 +52,17 @@
         </div>
       </nav>
 </header>
-    <div id="welcome-message" style='text-align: center; margin-top: 20px;'>
-        <h1>Welcome to P-Task</h1>
-        <h1>Login page </h1>
+<div class='container' style="text-align: center; margin-top:50px">
+    <div class="form mt-4">
+        <h1 class='mt-4'>Profile delete</h1>
+        <form method="post">{% csrf_token %}
+            <p><b>{{ object.user_name }}</b> If you confirm your profile will delete,are you sure ? </p>
+            <div class="center">
+                <button class="btn btn-danger mb-4">
+                    <span>Confirm</span>
+                </button>
+            </div>
+        </form>
     </div>
-    <div class="login-page">
-        <div class="form">
-            <form class="login-form" method="POST">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <button type='submit' class="btn btn-primary">Enter</button>
-                <div class="message-login">Not registered? <a href="{% url 'register_page' %}">Register</a></div>
-                <div class="message-password-reset">Forgoten password? <a href="{% url 'password_reset' %}">Reset password</a>
-                </div>
-            </form>
-        </div>
-    </div>
+</div>
 {% endblock %}

@@ -35,4 +35,29 @@ urlpatterns = [
     path('task-bg/edit/<int:pk>/', views.EditTaskViewBg.as_view(), name='task_edit_bg'),
     path('task-bg/delete/<int:pk>/', views.DeleteTaskViewBg.as_view(), name='task_delete_bg'),
     path('task-completed-bg/' , views.TaskCompletedViewBg.as_view(), name='tasks_completed_view_bg'),
+    
+    
+    #ProfileViews
+    
+    path('profile/', views.ProfilePageView.as_view(), name='profile_view'),
+    path('profile-edit/<int:pk>/', views.profile_edit, name='profile_edit'),
+    #passwords reset delete user , etc.
+     path('profile-delete/<int:pk>', views.DeleteProfileView.as_view(), name="profile_delete"),
+
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='profile/password-reset.html'),
+         name="password_reset"),
+
+    path('password_reset_sent/',
+         auth_views.PasswordResetDoneView.as_view(template_name='profile/password-reset-sent.html'),
+         name="password_reset_done"),
+
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='profile/password-reset-form.html'),
+         name="password_reset_confirm"),
+
+    path('password_reset_complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='profile/password-reset-complete.html'),
+         name="password_reset_complete"),
+
+
 ] 
