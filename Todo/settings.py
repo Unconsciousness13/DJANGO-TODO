@@ -18,7 +18,7 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = ['p-task.up.railway.app', '127.0.0.1',]
 
@@ -158,6 +158,7 @@ LOGOUT_REDIRECT_URL = 'home.html'
 
 LOGIN_URL = 'login_page'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
