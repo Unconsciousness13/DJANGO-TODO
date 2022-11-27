@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views import generic as views
 from django.views.generic import TemplateView
 from .models import Task, CustomUser
-from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg , RegisterFormEs , UpdateForm
+from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg , RegisterFormEs , UpdateForm 
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
@@ -372,7 +372,9 @@ class ProfilePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = CustomUser.objects.get(pk=self.request.user.pk)
+        # groups = UsersGroup.objects.all()
         context['profile'] = profile
+        # context['groups'] = groups
         return context
 
 
@@ -408,6 +410,17 @@ class DeleteProfileView(views.DeleteView):
                 return self.model.objects.filter(pk=owner)
         except:
             redirect('tasks/not-exist.html')
+            
+# class AddGroupView(LoginRequiredMixin, views.FormView):
+#     template_name = 'profile/create-group.html'
+#     form_class = CreateGroupForm
+#     success_url = '/profile/'
+
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user
+#         form.save()
+#         return super().form_valid(form)
+
     
 # // Errors views //
 def handler404(request, exception):

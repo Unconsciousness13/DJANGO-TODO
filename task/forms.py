@@ -110,3 +110,8 @@ class UpdateForm(forms.ModelForm):
                   'last_name',
                   'email',
                   )
+        
+# class CreateGroupForm(forms.ModelForm):
+#     class Meta:
+#         model = UsersGroup
+#         fields= ('name', 'users',)

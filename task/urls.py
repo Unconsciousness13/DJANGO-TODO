@@ -38,6 +38,8 @@ urlpatterns = [
     
     
     #ProfileViews
+#     path('create-grpoup/' , views.AddGroupView.as_view() , name='create_group'),
+    
     
     path('profile/', views.ProfilePageView.as_view(), name='profile_view'),
     path('profile-edit/<int:pk>/', views.profile_edit, name='profile_edit'),

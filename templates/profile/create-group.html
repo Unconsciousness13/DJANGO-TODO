@@ -61,36 +61,15 @@
 </nav>
 </header>
     <div class="container text-center mt-4 mb-4">
-        <h1>@{{ user.user_name }}</h1>
-        <h2>({{ user.first_name }} {{ user.last_name }})</h2>
-        <h3>{{ user.email }}</h3>
-        <h3>Profile created: {{ user.start_time|date:'D d M Y' }}</h3>
-        
-        {% if user.is_active %}
-            <a href="{% url 'profile_edit' user.pk %}">
-                <button class="btn btn-primary">Edit</button>
-            </a>
-            <a href="{% url 'profile_delete' user.pk %}">
-                <button class="btn btn-danger">Delete</button>
-            </a>
-        {% endif %}
-     <br>
-    <h5 class="message" style="margin-top: 20px"><a style="color: blue" href="/password_reset">Change password?</h2>
+        <div class="form">
+            <form class="create-group-form" method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type='submit' class="btn btn-primary">Create</button>
+                </p>
+            </form>
+        </div>
     </div>
+
     
-    {% comment %} <p class="text-center"><a href="{% url 'create_group' %}">Create group </a><p>
-      
-      {% for group in groups %}
-      {% if user.user_name in group.users %}
-      <p class="text-center"> You are in {{ group.name }} group </p>
-      <p class="text-center"> Group users are: </p>
-      {% for user in group.users %}
-      <p class="text-center"> {{ user }} </p>
-      {% endfor %}
-      {% endif %}
-      
-      {% endfor %} {% endcomment %}
-      
-     
-      
 {% endblock %}

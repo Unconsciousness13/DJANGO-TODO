@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Task, CustomUser
 from django.contrib.auth.admin import UserAdmin
-from django.forms import Textarea
+# from django.forms import Textarea
 
 @admin.register(Task)
 class GymnastAdminConfig(admin.ModelAdmin):
@@ -34,3 +34,4 @@ class UserAdminConfig(UserAdmin):
 
 
 admin.site.register(CustomUser, UserAdminConfig)
+# admin.site.register(UsersGroup)
