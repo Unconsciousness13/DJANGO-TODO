@@ -37,8 +37,8 @@ urlpatterns = [
     path('task-completed-bg/' , views.TaskCompletedViewBg.as_view(), name='tasks_completed_view_bg'),
     
     
-    #ProfileViews
-#     path('create-grpoup/' , views.AddGroupView.as_view() , name='create_group'),
+#     ProfileViews
+    
     
     
     path('profile/', views.ProfilePageView.as_view(), name='profile_view'),

@@ -17,7 +17,7 @@ BASE_DIR_2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = False
+DEBUG = True
 
 
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task',
+    'groups',
 ]
 
 MIDDLEWARE = [
@@ -168,5 +169,3 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('APP_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('APP_EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
-
-print(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD,DEBUG)

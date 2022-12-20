@@ -60,32 +60,13 @@
   </div>
 </nav>
 </header>
-    <div class="container text-center mt-4 mb-4">
-        <h1>@{{ user.user_name }}</h1>
-        <h2>({{ user.first_name }} {{ user.last_name }})</h2>
-        <h3>{{ user.email }}</h3>
-        <h3>Profile created: {{ user.start_time|date:'D d M Y' }}</h3>
-        
-        {% if user.is_active %}
-            <a href="{% url 'profile_edit' user.pk %}">
-                <button class="btn btn-primary">Edit</button>
-            </a>
-            <a href="{% url 'profile_delete' user.pk %}">
-                <button class="btn btn-danger">Delete</button>
-            </a>
-        {% endif %}
-     <br>
-    <h5 class="message" style="margin-top: 20px"><a style="color: blue" href="/password_reset">Change password?</a></h5>
-    </div>
-    
-    <div>
-      <a href="{% url 'groups list' %}">
-        Groups
-      </a> 
-    </div>
-    <div>
-      <a href="{% url 'friends list' %}">Friends</a>
-    </div>
-    
+
+
+
+
+
+
+
+
       
 {% endblock %}

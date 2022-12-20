@@ -34,4 +34,3 @@ class UserAdminConfig(UserAdmin):
 
 
 admin.site.register(CustomUser, UserAdminConfig)
-# admin.site.register(UsersGroup)

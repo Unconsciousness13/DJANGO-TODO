@@ -2,10 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
-from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy
-# from django.contrib.postgres.fields import ArrayField
+from django.conf import settings
+from django.utils import timezone
 
 
 
@@ -92,9 +92,3 @@ class Task(models.Model):
         return self.title
     
     
-# class UsersGroup(models.Model):
-#     name = models.CharField(max_length=55, unique=True)
-#     users = ArrayField(base_field=models.CharField(max_length=200, null=True), default=list(CustomUser))
-    
-#     def __str__(self) -> str:
-#         return self.name
