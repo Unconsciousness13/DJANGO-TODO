@@ -62,7 +62,16 @@
 </header>
 
 
+ 
+ {% for group in groups %}  
+    <p><a href="#">{{ group.name }} </a></p>
+    
+        <p>{{ group.users }}</p>
 
+
+        
+ {% endfor %}
+    
 
 
 

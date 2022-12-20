@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import  LoginRequiredMixin
 from django.views import generic as views
 from .forms import CreateGroupForm
 from django.http import HttpResponse
-from .models import FriendRequest, FriendList
+from .models import FriendRequest, FriendList,UsersGroup
 from task.models import CustomUser
 
 # Create your views here.
@@ -64,4 +64,7 @@ def friends_list_view(request, *args, **kwargs):
 
 
 def groups_list_view(request, *args, **kwargs):
-    return render(request, 'groups/profile-groups.html', {})
+    context = {}
+    user = request.user
+    context['groups'] = UsersGroup.objects.all()
+    return render(request, 'groups/profile-groups.html', context)
