@@ -7,7 +7,6 @@ from .forms import AddTask, AddTaskEs, AddTaskBg, RegisterForm ,RegisterFormBg ,
 from django.views import generic as gen_views
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
-from groups.forms import UsersGroup
 from django.shortcuts import  render,redirect
 
 
@@ -373,9 +372,7 @@ class ProfilePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProfilePageView, self).get_context_data(**kwargs)
         profile = CustomUser.objects.get(pk=self.request.user.pk)
-        groups = UsersGroup.objects.all()
         context['profile'] = profile
-        context['groups'] = groups
         return context
 
 
